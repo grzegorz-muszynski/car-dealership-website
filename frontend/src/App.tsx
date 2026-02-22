@@ -18,7 +18,7 @@ import Thanks from "./pages/Thanks";
 import Wallpaper from "./components/Wallpaper";
 
 // hooks
-import useFetch from './hooks/useFetch';
+import useFetchAll from './hooks/useFetchAll';
 import mergeSort from './hooks/mergeSort';
 
 // Styling
@@ -31,9 +31,8 @@ const client = new ApolloClient({
 });
 
 
-// The code lines below get more than 25 records given by a default, the Strapi's limit is 100 (can't be increased)
-const apiURL1: string = 'https://kokpit.alfamotors.pl/api/cars?sort=date&pagination[pageSize]=100&populate=*';
-const apiURL2: string = 'https://kokpit.alfamotors.pl/api/cars?sort=date&pagination[start]=100&pagination[limit]=100&populate=*';
+// Fetch all cars using Strapi pagination
+const apiBaseURL: string = 'https://kokpit.alfamotors.pl/api/cars?sort=date&populate=*';
 
 // Pages with sold cars counter
 let chunksQuantity = 0;
@@ -79,27 +78,23 @@ interface CarData {
 function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true); // Correct initialization with useState
 
-  const fetchedObject1 = useFetch(apiURL1);
-  const fetchedObject2 = useFetch(apiURL2);
+  const fetchedObject = useFetchAll(apiBaseURL, { pageSize: 100 });
 
   // React useEffect hook to reactively manage isLoading based on fetched data
   useEffect(() => {
     // Update isLoading based on loading states of fetched objects
-    if (fetchedObject1.loading || fetchedObject2.loading) {
+    if (fetchedObject.loading) {
       setIsLoading(true);
     } else {
       setIsLoading(false);
     }
     // Also consider updating isLoading based on error states if necessary
-  }, [fetchedObject1.loading, fetchedObject2.loading, fetchedObject1.error, fetchedObject2.error]);
+  }, [fetchedObject.loading, fetchedObject.error]);
   
-  if (fetchedObject1.error || fetchedObject2.error) return;
-  
-  // Merging both arrays
-  const combinedData = [...fetchedObject1.data, ...fetchedObject2.data];
-  
+  if (fetchedObject.error) return;
+    
   // Using merge sort for setting cars in the order basing on "owners_number" attribute. It's treated as "kolejność" atttribute in the user's panel
-  const sortedCars = mergeSort(combinedData);
+  const sortedCars = mergeSort(fetchedObject.data);
 
   // Extracting offered cars
   const filteredCarsOffered = sortedCars.filter((car: CarData[]) => car[1].attributes.state !== 'sold');

@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
 const strapiURL = 'https://kokpit.alfamotors.pl/';
-const apiURL = 'https://kokpit.alfamotors.pl/api/cars?sort=date&pagination[start]=12&pagination[limit]=100&populate=* ';
 
     // Local
 // const strapiURL = 'http://localhost:1337';
@@ -75,10 +74,9 @@ interface Image {
 
 export default function CarPage() {
     const { id } = useParams();
-    // IDs of cars are not like the order due to deleted records (e.g. first record from db has ID = 12). This why the program uses pagination
-    let pagination: number = Number(id) - 20; // TS doesn't accept substracting number from string
-    if (pagination < 0) pagination = 0;
-    const apiURL = 'https://kokpit.alfamotors.pl/api/cars?sort=date&pagination[start]=' + pagination + '&pagination[limit]=100&populate=* '; 
+    const apiURL = id
+        ? `https://kokpit.alfamotors.pl/api/cars/${id}?populate=*`
+        : '';
     
     const { loading, error, data } = useFetch(apiURL);
     let imagesURLs: string[] = []; // here will be stored URLs of images
@@ -96,10 +94,19 @@ export default function CarPage() {
     let foundCar: any = data.find(isThatCar);
 
     // Collecting an array of car's images
-    if (foundCar && foundCar[1]) {    
-        foundCar[1].attributes.gallery.data.map((image: Image) => (
-            imagesURLs.push(strapiURL + image.attributes.formats.large.url)
-        ));
+    if (foundCar && foundCar[1]) {
+        const gallery = foundCar?.[1]?.attributes?.gallery?.data ?? [];
+        gallery.forEach((image: Image) => {
+            const formats = image?.attributes?.formats;
+            const relUrl =
+                formats?.large?.url ||
+                formats?.medium?.url ||
+                formats?.small?.url ||
+                formats?.thumbnail?.url ||
+                image?.attributes?.url ||
+                '';
+            if (relUrl) imagesURLs.push(strapiURL + relUrl);
+        });
     } else {
         // if url has ID which is not in db
         return <h3 style={{textAlign: 'center', fontSize: '22px', fontWeight: '700', marginTop: 50, paddingInline: '5px'}}>Brak samochodu o takim identyfikatorze.</h3>

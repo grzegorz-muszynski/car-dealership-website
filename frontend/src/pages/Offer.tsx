@@ -63,7 +63,17 @@ export default function Offer(props: OfferProps) {
               year={car[1].attributes.year} 
               fuel={car[1].attributes.fuel} 
               power={car[1].attributes.power} 
-              imageSource={strapiURL + car[1].attributes.gallery.data[0].attributes.formats.small.url}
+              imageSource={(() => {
+                const g0 = car?.[1]?.attributes?.gallery?.data?.[0]?.attributes;
+                const relUrl =
+                  g0?.formats?.small?.url ||
+                  g0?.formats?.medium?.url ||
+                  g0?.formats?.large?.url ||
+                  g0?.formats?.thumbnail?.url ||
+                  g0?.url ||
+                  '';
+                return relUrl ? strapiURL + relUrl : '';
+              })()}
             />
           ))
         )}
