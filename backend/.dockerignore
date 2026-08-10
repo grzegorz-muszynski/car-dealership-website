@@ -6,3 +6,5 @@ node_modules
 build
 public/uploads
 npm-debug.log
+data
+docker-compose.yml
