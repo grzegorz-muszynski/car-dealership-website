@@ -1,0 +1,15 @@
+services:
+  strapi:
+    build: .
+    image: alfa-motors-strapi:latest
+    container_name: alfa-motors-strapi
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+    ports:
+      - "${STRAPI_HOST_PORT:-1337}:1337"
+    volumes:
+      - ./data/tmp:/opt/app/.tmp
+      - ./data/uploads:/opt/app/public/uploads
