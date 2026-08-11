@@ -30,6 +30,7 @@ interface GalleryItem {
                   url: string;
               };
           };
+          url?: string;
       };
       id: number;
   }[];
