@@ -4,7 +4,7 @@ import Loader from '../components/Loader';
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
-const strapiURL = 'https://wanda196-20196.mikrus.cloud/';
+const strapiURL = 'https://wanda196-20196.mikrus.cloud';
 
     // Local
 // const strapiURL = 'http://localhost:1337';
