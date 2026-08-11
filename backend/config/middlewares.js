@@ -4,7 +4,11 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['https://alfamotors.pl', 'https://www.alfamotors.pl'],
+      origin: [
+        'https://alfamotors.pl',
+        'https://www.alfamotors.pl',
+        'https://wanda196-20196.mikrus.cloud',
+      ],
     },
   },
   'strapi::poweredBy',
