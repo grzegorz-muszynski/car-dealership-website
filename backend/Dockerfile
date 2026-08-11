@@ -1,8 +1,11 @@
 # --- Stage 1: build ---
 FROM node:18-alpine AS build
 
-# native deps needed to compile better-sqlite3 and Strapi's image processing (sharp)
-RUN apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev python3
+# native deps needed to compile better-sqlite3.
+# deliberately NOT installing vips-dev: sharp detects a system libvips and
+# tries to build against it from source, which fails on Alpine/musl. Without
+# it, sharp's installer falls back to its prebuilt musl binary instead.
+RUN apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev python3
 
 WORKDIR /opt/app
 
@@ -16,8 +19,6 @@ RUN npm run build
 
 # --- Stage 2: runtime ---
 FROM node:18-alpine
-
-RUN apk add --no-cache vips-dev
 
 ENV NODE_ENV=production
 WORKDIR /opt/app
