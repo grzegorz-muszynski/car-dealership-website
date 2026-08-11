@@ -1,7 +1,7 @@
 import Car from '../components/Car';
 import Loader from '../components/Loader';
 
-const strapiURL: string = 'https://kokpit.alfamotors.pl';
+const strapiURL: string = 'https://wanda196-20196.mikrus.cloud';
 
 interface CarAttributes {
   state: string;

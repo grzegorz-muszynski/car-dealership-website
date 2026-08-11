@@ -32,7 +32,7 @@ const client = new ApolloClient({
 
 
 // Fetch all cars using Strapi pagination
-const apiBaseURL: string = 'https://kokpit.alfamotors.pl/api/cars?sort=date&populate=*';
+const apiBaseURL: string = 'https://wanda196-20196.mikrus.cloud/api/cars?sort=date&populate=*';
 
 // Pages with sold cars counter
 let chunksQuantity = 0;

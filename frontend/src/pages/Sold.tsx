@@ -2,7 +2,7 @@ import Car from '../components/Car';
 import Loader from '../components/Loader';
 import PagesToggler from '../components/PagesToggler';
 
-const strapiURL: string = 'https://kokpit.alfamotors.pl';
+const strapiURL: string = 'https://wanda196-20196.mikrus.cloud';
 
     // Local:
 // const strapiURL = 'http://localhost:1337';
