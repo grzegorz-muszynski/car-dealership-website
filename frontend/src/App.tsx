@@ -46,6 +46,7 @@ interface CarAttributes {
   fuel: string;
   power: number;
   gallery: GalleryItem;
+  kolejnosc?: number;
 }
 
 interface GalleryItem {
@@ -93,7 +94,7 @@ function App() {
   
   if (fetchedObject.error) return;
     
-  // Using merge sort for setting cars in the order basing on "owners_number" attribute. It's treated as "kolejność" atttribute in the user's panel
+  // Using merge sort for setting cars in the order basing on the "kolejnosc" attribute
   const sortedCars = mergeSort(fetchedObject.data);
 
   // Extracting offered cars

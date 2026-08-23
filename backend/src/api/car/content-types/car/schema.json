@@ -85,6 +85,10 @@
     "description": {
       "type": "richtext",
       "required": false
+    },
+    "kolejnosc": {
+      "type": "integer",
+      "required": false
     }
   }
 }
