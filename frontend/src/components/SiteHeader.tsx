@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
-import menuBtn from '../assets/siteHeader/menuBtn.png';    
+import menuBtn from '../assets/siteHeader/menuBtn.png';
+import logo from '../assets/siteHeader/logo.webp';
 import phoneIcon from '../assets/contact/phoneIcon.png';    
 
 export default function SiteHeader() {
@@ -29,28 +30,44 @@ export default function SiteHeader() {
 
     return (
         <div className='w-full relative
-        lg:h-[120px]
         xl:w-[1200px] mx-auto text-17 font-semibold'>
 
-            {/* Logo with a link and description below */}
-            <div className='block w-full max-w-xs my-1 mx-auto py-1 px-0
-                sm:max-w-none sm:inline-block sm:w-[450px] sm:inline-block sm:ml-8
-                lg:p-0 lg:my-0'
+            {/* Logo with a link */}
+            <div className='block w-full max-w-xs my-2 mx-auto px-0
+                sm:max-w-none sm:inline-block sm:w-[400px] sm:ml-8
+                lg:w-[520px] lg:ml-11'
             >
-                <NavLink to='/' style={{color: 'black'}}>
-                    <h2 className='p-0 pt-2 text-center font-bebasFont text-4xl font-thin
-                        sm:inline-block sm:pl-8'
-                    >ALFA MOTORS</h2>
+                <NavLink to='/'>
+                    <img
+                        className='block w-full h-auto'
+                        src={logo}
+                        alt='Alfa Motors - Centrum Wyselekcjonowanych Krajowych Samochodów Marek Premium'
+                    />
                 </NavLink>
-                <p className='p-0 text-center font-bebasFont font-thin text-lg
-                lg:'
-                >Centrum Wyselekcjonowanych Krajowych Samochodów Marek Premium</p>
             </div>
 
-            {/* Navbar */}
-            <ul className={`absolute z-20 top-[139px] w-full
-                sm:top-[92px]
-                lg:top-[70px] lg:pl-3
+            {/* Menu button */}
+            <img 
+                className='block mx-auto mb-3 h-5 w-5 cursor-pointer
+                sm:inline-block sm:float-right sm:mr-4 sm:mt-4
+                lg:hidden'
+                src={menuBtn}
+                onClick={toggleMenu}
+                ref={buttonRef}
+                alt='Najlepsze samochody używane w Małopolsce'
+            />
+
+            {/* Phone number with an icon */}
+            <div className='SiteHeader__phoneData hidden relative mt-3 mr-1
+            sm:hidden
+            md:float-right md:inline-block'>
+                <img className='inline-block h-4' src={phoneIcon} alt="Znajdź auto klasy premium" />
+                <p className='inline-block h-4 px-2'>+48 505 964 955</p>
+            </div>
+
+            {/* Navbar - a dropdown below the header on small screens, a regular row below the logo on large ones */}
+            <ul className={`absolute z-20 top-full w-full
+                lg:static lg:clear-both lg:pl-3
                 ${menuOpen ? 'siteHeader__navbar--shown' : 'siteHeader__navbar--hidden'}`}
                 ref={menuRef}
             >
@@ -84,25 +101,6 @@ export default function SiteHeader() {
                     </li>
                 </NavLink>
             </ul>
-
-            {/* Menu button */}
-            <img 
-                className='block mx-auto mb-3 h-5 w-5 cursor-pointer
-                sm:inline-block sm:float-right sm:mr-4 sm:mt-4
-                lg:hidden'
-                src={menuBtn}
-                onClick={toggleMenu}
-                ref={buttonRef}
-                alt='Najlepsze samochody używane w Małopolsce'
-            />
-
-            {/* Phone number with an icon */}
-            <div className='SiteHeader__phoneData hidden relative mt-3 mr-1
-            sm:hidden
-            md:float-right md:inline-block'>
-                <img className='inline-block h-4' src={phoneIcon} alt="Znajdź auto klasy premium" />
-                <p className='inline-block h-4 px-2'>+48 505 964 955</p>
-            </div>
         </div>
     )
 }

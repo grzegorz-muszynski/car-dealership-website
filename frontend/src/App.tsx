@@ -32,7 +32,9 @@ const client = new ApolloClient({
 
 
 // Fetch all cars using Strapi pagination
-const apiBaseURL: string = 'https://wanda196-20196.mikrus.cloud/api/cars?sort=date&populate=*';
+// In development requests go through the dev server proxy (src/setupProxy.js), as Strapi's CORS blocks localhost
+const apiOrigin: string = process.env.NODE_ENV === 'development' ? '' : 'https://wanda196-20196.mikrus.cloud';
+const apiBaseURL: string = `${apiOrigin}/api/cars?sort=date&populate=*`;
 
 // Pages with sold cars counter
 let chunksQuantity = 0;

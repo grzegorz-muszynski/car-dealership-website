@@ -74,8 +74,10 @@ interface Image {
 
 export default function CarPage() {
     const { id } = useParams();
+    // In development requests go through the dev server proxy (src/setupProxy.js), as Strapi's CORS blocks localhost
+    const apiOrigin = process.env.NODE_ENV === 'development' ? '' : strapiURL;
     const apiURL = id
-        ? `https://wanda196-20196.mikrus.cloud/api/cars/${id}?populate=*`
+        ? `${apiOrigin}/api/cars/${id}?populate=*`
         : '';
     
     const { loading, error, data } = useFetch(apiURL);
