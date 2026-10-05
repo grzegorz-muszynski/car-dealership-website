@@ -32,10 +32,11 @@ export default function SiteHeader() {
         <div className='w-full relative
         xl:w-[1200px] mx-auto text-17 font-semibold'>
 
-            {/* Logo with a link */}
-            <div className='block w-full max-w-xs my-2 mx-auto px-0
-                sm:max-w-none sm:inline-block sm:w-[400px] sm:ml-8
-                lg:w-[520px] lg:ml-11'
+            {/* Logo with a link - from md up it fills the width left by the phone number (and menu button on md) */}
+            <div className='block w-full max-w-lg my-3 mx-auto px-3
+                sm:max-w-none sm:inline-block sm:w-[520px] sm:ml-6 sm:px-0
+                md:w-[calc(100%-285px)]
+                lg:w-[calc(100%-290px)] lg:ml-11'
             >
                 <NavLink to='/'>
                     <img
@@ -58,15 +59,16 @@ export default function SiteHeader() {
             />
 
             {/* Phone number with an icon */}
-            <div className='SiteHeader__phoneData hidden relative mt-3 mr-1
+            <div className='SiteHeader__phoneData hidden mt-4 mr-4 text-lg lg:text-xl
             sm:hidden
-            md:float-right md:inline-block'>
-                <img className='inline-block h-4' src={phoneIcon} alt="Znajdź auto klasy premium" />
-                <p className='inline-block h-4 px-2'>+48 505 964 955</p>
+            md:block md:absolute md:top-0 md:right-10
+            lg:right-0'>
+                <img className='inline-block h-5 align-middle' src={phoneIcon} alt="Znajdź auto klasy premium" />
+                <p className='inline-block px-2 align-middle'>+48 505 964 955</p>
             </div>
 
             {/* Navbar - a dropdown below the header on small screens, a regular row below the logo on large ones */}
-            <ul className={`absolute z-20 top-full w-full
+            <ul className={`absolute z-20 top-full w-full text-xl
                 lg:static lg:clear-both lg:pl-3
                 ${menuOpen ? 'siteHeader__navbar--shown' : 'siteHeader__navbar--hidden'}`}
                 ref={menuRef}

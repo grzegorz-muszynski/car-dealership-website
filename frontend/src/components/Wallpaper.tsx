@@ -10,9 +10,19 @@ import wallpaper8 from '../assets/backgrounds/wallpaper8.webp';
 import wallpaper9 from '../assets/backgrounds/wallpaper9.webp';
 import wallpaper10 from '../assets/backgrounds/wallpaper10.webp';
 
+// Each picture is cropped to the wallpaper's shape - "position" decides which part stays visible
+// (horizontal% vertical%; 0% = left/top edge, 100% = right/bottom edge), chosen so the cars stay in the frame
 const backgrounds = [
-    wallpaper1, wallpaper2, wallpaper3, wallpaper4, wallpaper5,
-    wallpaper6, wallpaper7, wallpaper8, wallpaper9, wallpaper10,
+    { src: wallpaper1, position: '50% 60%' },  // three BMWs in front of the garage
+    { src: wallpaper2, position: '50% 72%' },  // grey BMW in the garage (portrait) - grille
+    { src: wallpaper3, position: '50% 90%' },  // two BMWs in the garage
+    { src: wallpaper4, position: '50% 60%' },  // BMW in blue light
+    { src: wallpaper5, position: '50% 80%' },  // Mercedes and Audi RS6 at sunset
+    { src: wallpaper6, position: '50% 70%' },  // three BMWs, front view
+    { src: wallpaper7, position: '50% 72%' },  // row of Mercedes cars
+    { src: wallpaper8, position: '50% 30%' },  // interior with the lit sunroof
+    { src: wallpaper9, position: '50% 85%' },  // Audi RS6 from behind and BMWs
+    { src: wallpaper10, position: '50% 55%' }, // three Mercedes GLCs
 ];
 
 export default function Wallpaper() {
@@ -21,16 +31,18 @@ export default function Wallpaper() {
     const [shouldUpdateBackground1, setShouldUpdateBackground1] = useState(true);
 
     let styling1 = {
-        backgroundImage: `url(${backgrounds[background1]})`
+        backgroundImage: `url(${backgrounds[background1].src})`,
+        backgroundPosition: backgrounds[background1].position,
     }
-    
+
     let styling2 = {
-        backgroundImage: `url(${backgrounds[background2]})`
+        backgroundImage: `url(${backgrounds[background2].src})`,
+        backgroundPosition: backgrounds[background2].position,
     }
 
     // Preloading all backgrounds so a picture doesn't pop in while fading
     useEffect(() => {
-        backgrounds.forEach(src => {
+        backgrounds.forEach(({ src }) => {
             const img = new Image();
             img.src = src;
         });
@@ -52,7 +64,9 @@ export default function Wallpaper() {
     }, [shouldUpdateBackground1, background1, background2]);
 
     return (
-        <div id='wallpaper' className='h-[350px] relative'>
+        // Height grows with the screen width (40% of it), so every screen shows a similar crop;
+        // limited to 220-540px so it's neither a thin strip on phones nor pushing the offer off-screen on big monitors
+        <div id='wallpaper' className='h-[clamp(220px,40vw,540px)] relative'>
             {/* Background no. 1 */}
             <div
                 // When background 1 is waiting for being updated - must be hidden
