@@ -15,6 +15,7 @@ import Sold from "./pages/Sold";
 import ScrollPagesTop from "./hooks/scrollPagesTop";
 import SiteHeader from "./components/SiteHeader";
 import SocialSidebar from "./components/SocialSidebar";
+import CallButton from "./components/CallButton";
 import Thanks from "./pages/Thanks";
 import Wallpaper from "./components/Wallpaper";
 
@@ -124,7 +125,8 @@ function App() {
   return (
     <Router>
       <ApolloProvider client={client}>
-        <div className="App min-h-screen relative">
+        {/* Flex column keeps the footer at the bottom; on phones the bottom padding makes room for the call bar */}
+        <div className="App flex flex-col min-h-screen relative pb-14 sm:pb-0">
           <ScrollPagesTop />
           <SiteHeader />
           <SocialSidebar />
@@ -144,6 +146,7 @@ function App() {
             <Route path='/thanks' element={<Thanks />} /> 
           </Routes>
           <Footer />
+          <CallButton />
         </div>
       </ApolloProvider>
     </Router>
