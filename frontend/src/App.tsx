@@ -14,6 +14,7 @@ import Offer from "./pages/Offer";
 import Sold from "./pages/Sold";
 import ScrollPagesTop from "./hooks/scrollPagesTop";
 import SiteHeader from "./components/SiteHeader";
+import SocialSidebar from "./components/SocialSidebar";
 import Thanks from "./pages/Thanks";
 import Wallpaper from "./components/Wallpaper";
 
@@ -126,6 +127,7 @@ function App() {
         <div className="App min-h-screen relative">
           <ScrollPagesTop />
           <SiteHeader />
+          <SocialSidebar />
           <Wallpaper />
           <Routes>
             <Route path='/about' element={<About />} /> 

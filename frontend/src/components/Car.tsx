@@ -15,7 +15,7 @@ export default function Car(props: any) {
 
     return (
         <div className='Car
-            inline-block relative border-2 border-black rounded-[20px] w-[270px] h-[370px] my-3 mx-3 font-bebasFont '>
+            inline-block relative border-2 border-gold-dark/60 bg-panel rounded-[20px] w-[270px] h-[370px] my-3 mx-3 font-bebasFont '>
 
             {/* Container for a ribbon */}
             <span className={
@@ -45,7 +45,7 @@ export default function Car(props: any) {
                 onLoad={handleImageLoad}
             />
             <img 
-                className="block h-[200px] p-[70px] mx-auto border-b-2 border-black"
+                className="block h-[200px] p-[70px] mx-auto border-b-2 border-gold-dark/60"
                 src={gif} 
                 alt='Solidne auta używane' 
                 style={isImageLoaded ? {display: 'none'} : {display: 'block'}}
@@ -53,7 +53,7 @@ export default function Car(props: any) {
 
             {/* Car's name */}
             <p className='flex items-center justify-center py-px px-2 h-[56px] text-center'>
-                <span className='inline-block leading-car-title text-xl align-middle'>{props.title}</span>
+                <span className='inline-block leading-car-title text-xl align-middle text-silver-light'>{props.title}</span>
             </p>
 
             {/* Infobox */}
@@ -93,8 +93,7 @@ export default function Car(props: any) {
             </div>
 
             <NavLink to={`/CarPage/${props.id}`}>
-                <p className='w-[97px] h-[34px] leading-[34px] text-center tracking-[0.03em] text-[20px] border-2 border-black rounded-md block mx-auto bg-white text-black transition-colors duration-1000 no-underline cursor-pointer
-                hover:bg-black hover:text-white'>SZCZEGÓŁY</p>
+                <p className='w-[97px] h-[34px] leading-[34px] text-center tracking-[0.03em] text-[20px] block mx-auto no-underline btn-gold'>SZCZEGÓŁY</p>
             </NavLink>
         </div>
     )

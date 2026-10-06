@@ -6,7 +6,7 @@ export default function About() {
             <div className="mb-5">
                 <h2 className="about__subtitle">Historia</h2>
                 <p>
-                    <span className="font-bold">ALFA MOTORS</span> to rodzinna firma specjalizująca się w sprzedaży luksusowych samochodów marek premium, której tradycja sięga już prawie trzydziestu lat.
+                    <span className="font-bold text-gold">ALFA MOTORS</span> to rodzinna firma specjalizująca się w sprzedaży luksusowych samochodów marek premium, której tradycja sięga już prawie trzydziestu lat.
                 </p>
                 <p>
                     Powstała z pasji do motoryzacji, gdzie doświadczenie i wiedza o samochodach została przekazana z pokolenia na pokolenie.
@@ -49,7 +49,7 @@ export default function About() {
                 </ul>
             </div>
             
-            <h3 className="font-bebasFont text-center text-3xl font-medium pt-2 pb-7 mx-auto my-0">Zapraszamy do kontaktu przez formularz, mailowo lub telefonicznie!</h3>
+            <h3 className="font-bebasFont text-center text-3xl font-medium text-gold pt-2 pb-7 mx-auto my-0">Zapraszamy do kontaktu przez formularz, mailowo lub telefonicznie!</h3>
         </div>
     );
 }

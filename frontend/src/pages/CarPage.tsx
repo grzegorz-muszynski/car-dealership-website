@@ -116,10 +116,10 @@ export default function CarPage() {
 
     return (
         <div className='CarPage relative pb-64'> {/* Relative position necessary to lock table with absolute position */}
-            <h1 className='py-4 px-2 font-bebasFont text-2xl text-center
+            <h1 className='py-4 px-2 font-bebasFont text-2xl text-center text-silver-light
             sm:py-6 sm:text-3xl'>
                 {foundCar[1].attributes.title + ' '}
-                <div className='CarPage__price__area font-medium text-red-600 sm:inline-block' style={
+                <div className='CarPage__price__area font-medium text-gold sm:inline-block' style={
                     foundCar[1].attributes.state==='sold' || 
                     foundCar[1].attributes.state==='soon' ? {display: 'none'} : {}
                 }>
@@ -135,7 +135,7 @@ export default function CarPage() {
             {/* Mini slider */}
             <ImageSlider id='ImageSlider' slides={imagesURLs} />
 
-            <table className='relative top-16 w-90vw max-w-lg mx-auto bg-gray-100 border border-black shadow-car-page-shadow text-[15px] font-medium
+            <table className='relative top-16 w-90vw max-w-lg mx-auto bg-panel border border-gold-dark/60 shadow-car-page-shadow text-[15px] font-medium
             lg:inline-block lg:top-0 lg:left-2 lg:max-w-none lg:w-[360px]
             xl:left-4
             '>
@@ -199,8 +199,8 @@ export default function CarPage() {
                 </tbody>
             </table>
 
-            <div className='CarPage__description relative top-32 w-90vw max-w-[1080px] mx-auto bg-gray-100 shadow-car-page-shadow'>
-                <div className="pt-3 pb-7 font-medium text-3xl text-center underline underline-offset-[12px]">Opis pojazdu</div>
+            <div className='CarPage__description relative top-32 w-90vw max-w-[1080px] mx-auto bg-panel border border-gold-dark/60 shadow-car-page-shadow'>
+                <div className="pt-3 pb-7 font-medium text-3xl text-center text-gold">Opis pojazdu</div>
                 <ReactMarkdown className='px-2'>
                     {foundCar[1].attributes.description}
                 </ReactMarkdown>

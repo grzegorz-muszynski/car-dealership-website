@@ -12,7 +12,7 @@ export default function PagesToggler (props: PagesTogglerProps) {
         <NavLink key={index} to={`/sold/${index + 1}`}>
             <li className={
                 `${location.pathname === `/sold/${index + 1}` ? 
-                    'underline' 
+                    'underline text-gold' 
                     : ''}
                 mx-2`
             }>

@@ -12,10 +12,24 @@ module.exports = {
         'car-shadow-green': '109.5px -110px hsl(120, 100%, 15%)',
         'car-shadow-red': '109.5px -110px hsl(0, 100%, 40%)',
         'car-shadow-yellow': '0px 70px hsl(39, 100%, 40%)',
-        'buy-form': '5px 5px 5px 5px hsl(0, 0%, 80%)',
-        'car-page-shadow': '5px 5px 5px 5px hsl(0, 0%, 70%)',
+        'buy-form': '0 0 18px hsl(40, 50%, 62%, 0.18)',
+        'car-page-shadow': '0 0 18px hsl(40, 50%, 62%, 0.18)',
       },
       colors: {
+        // Black / gold / silver palette taken from the Alfa Motors logo
+        'ink': '#000000',        // page background - pure black so the logo's own background blends in
+        'panel': '#141414',      // cards, forms, tables
+        'panel-hover': '#1f1f1f',
+        'gold': {
+          light: '#F5E6B8',
+          DEFAULT: '#CFAE6B',
+          dark: '#9A7438',
+        },
+        'silver': {
+          light: '#F2F2F2',
+          DEFAULT: '#D6D6D6',
+          dark: '#9A9A9A',
+        },
         'footer-gray': '#666666',
         'car-page-red': 'hsl(0, 100%, 40%)',
         'car-green': 'hsl(120, 100%, 15%)',

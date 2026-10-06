@@ -1,7 +1,7 @@
 export default function Buy() {
     return (
         <div id="Buy" className="pt-8 pb-32 font-bebasFont">
-            <div className="max-w-72 w-10/12 px-2 pb-4 mx-auto bg-gray-200 shadow-buy-form
+            <div className="max-w-72 w-10/12 px-2 pb-4 mx-auto bg-panel border border-gold-dark/40 shadow-buy-form
             sm:max-w-none sm:w-[530px]
             md:w-[680px]
             xl:w-[1100px] xl:pb-0">
@@ -47,9 +47,8 @@ export default function Buy() {
                         </div>  
 
                         {/* Button replaced with <input> for Safari browser */}
-                        <input className="block w-20 mt-4 mx-auto text-lg tracking-wide bg-white border-2 border-black rounded-md border-black rounded-md block mx-autoduration-1000 transition-colors cursor-pointer
-                        xl:relative xl:left-[90px] xl:bottom-[49px]
-                        hover:bg-black hover:text-white" type='submit' value='WYŚLIJ' />
+                        <input className="block w-20 mt-4 mx-auto text-lg tracking-wide btn-gold
+                        xl:relative xl:left-[90px] xl:bottom-[49px]" type='submit' value='WYŚLIJ' />
                     </div>
 
                     <input className="buy__area__form__input" type="hidden" name="_subject" value="Oferta od klienta"></input>

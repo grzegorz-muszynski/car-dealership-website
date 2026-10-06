@@ -9,6 +9,12 @@ import wallpaper7 from '../assets/backgrounds/wallpaper7.webp';
 import wallpaper8 from '../assets/backgrounds/wallpaper8.webp';
 import wallpaper9 from '../assets/backgrounds/wallpaper9.webp';
 import wallpaper10 from '../assets/backgrounds/wallpaper10.webp';
+import wallpaper11 from '../assets/backgrounds/wallpaper11.webp';
+import wallpaper12 from '../assets/backgrounds/wallpaper12.webp';
+import wallpaper13 from '../assets/backgrounds/wallpaper13.webp';
+import wallpaper14 from '../assets/backgrounds/wallpaper14.webp';
+import wallpaper15 from '../assets/backgrounds/wallpaper15.webp';
+import wallpaper16 from '../assets/backgrounds/wallpaper16.webp';
 
 // Each picture is cropped to the wallpaper's shape - "position" decides which part stays visible
 // (horizontal% vertical%; 0% = left/top edge, 100% = right/bottom edge), chosen so the cars stay in the frame
@@ -23,6 +29,12 @@ const backgrounds = [
     { src: wallpaper8, position: '50% 30%' },  // interior with the lit sunroof
     { src: wallpaper9, position: '50% 85%' },  // Audi RS6 from behind and BMWs
     { src: wallpaper10, position: '50% 55%' }, // three Mercedes GLCs
+    { src: wallpaper11, position: '50% 55%' }, // three BMWs at sunset
+    { src: wallpaper12, position: '50% 62%' }, // BMWs at night, lit grilles
+    { src: wallpaper13, position: '50% 80%' }, // two Cupras from behind at night
+    { src: wallpaper14, position: '50% 62%' }, // blue, white and black BMWs from the side
+    { src: wallpaper15, position: '50% 52%' }, // row of Mercedes GLCs
+    { src: wallpaper16, position: '50% 70%' }, // two black Mercedes GLCs
 ];
 
 export default function Wallpaper() {
@@ -40,13 +52,13 @@ export default function Wallpaper() {
         backgroundPosition: backgrounds[background2].position,
     }
 
-    // Preloading all backgrounds so a picture doesn't pop in while fading
+    // While a picture is shown, the next one is preloaded so it doesn't pop in while fading
+    // (only the next one - loading all of them at once would be heavy on phones)
+    const shownBackground = shouldUpdateBackground1 ? background2 : background1;
     useEffect(() => {
-        backgrounds.forEach(({ src }) => {
-            const img = new Image();
-            img.src = src;
-        });
-    }, []);
+        const img = new Image();
+        img.src = backgrounds[(shownBackground + 1) % backgrounds.length].src;
+    }, [shownBackground]);
 
     useEffect(() => {
         const interval = setInterval(() => {

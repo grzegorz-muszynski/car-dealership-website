@@ -65,7 +65,7 @@ export default function ImageSlider(props: any) {
             <div className="hidden justify-center flex-wrap px-5
             sm:flex">
                 {props.slides.map((slide: string, index: number) => (
-                    <div className='px-0.5 text-3xl leading-6 text-red-600 cursor-pointer'
+                    <div className='px-0.5 text-3xl leading-6 text-gold cursor-pointer'
                         key={index}
                         onClick={() => setCurrentIndex(index)}
                         style={currentIndex === index ? dotsStyle : {}}
