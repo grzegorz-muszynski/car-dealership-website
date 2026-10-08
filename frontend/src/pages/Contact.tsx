@@ -44,10 +44,17 @@ export default function Contact() {
                     <img className="relative top-1 h-4 pr-2" src={emailIcon} alt="Używane auta dobrej jakości" />
                     <span>E-mail: alfamotors.kontakt@gmail.com</span>
                 </div>
+                <div className="flex text-center">
+                    {/* Location pin (Material Icons, Apache 2.0) */}
+                    <svg className="relative top-1 h-4 w-4 mr-2 shrink-0 text-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    </svg>
+                    <span>Adres: Mikołaja Kopernika 57, 32-200 Miechów</span>
+                </div>
 
                 {/* Map */}
                 <iframe className="block my-2 mx-auto h-72 w-full border border-gold-dark rounded-md
-                lg:h-64" title='Map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1555473.3398993865!2d19.0236861221721!3d50.1859647846431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4717abd77be7063d%3A0x6bf2110444b3d159!2s32-200%20Miech%C3%B3w!5e0!3m2!1spl!2spl!4v1682497385509!5m2!1spl!2spl"></iframe>
+                lg:h-64" title='Map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d20.0200369!3d50.3640226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4717a9f30da58e63%3A0xab3feb2b7719b438!2sALFA%20MoToRS!5e0!3m2!1spl!2spl!4v1759900000000!5m2!1spl!2spl"></iframe>
             </span>        
         </div>
     )

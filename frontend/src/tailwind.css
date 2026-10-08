@@ -66,14 +66,26 @@
 .Car .car__container-ribbon--yellow,
 .Car .car__container-ribbon--red,
 .Car .car__container-ribbon--green {
-    @apply absolute top-[-8px] left-[-8px] w-[150px] h-[150px] text-white flex justify-center items-center overflow-hidden;
+    @apply absolute top-[-8px] left-[-8px] w-[150px] h-[150px] text-ink flex justify-center items-center overflow-hidden;
 }
 .Car .car__container-ribbon--yellow span,
 .Car .car__container-ribbon--red span,
 .Car .car__container-ribbon--green span {
-    @apply absolute top-[-8px] left-[-8px] w-[150px] h-[150px] text-white flex justify-center items-center overflow-hidden;
+    @apply absolute top-[-8px] left-[-8px] w-[150px] h-[150px] text-ink flex justify-center items-center overflow-hidden;
     transform: rotate(-45deg) translateY(-20px);
     @apply absolute left-[-60px] top-[50px] w-[250px] h-[27px] tracking-[0.02em];
+}
+
+/* Ribbon colors by status: price (available) - gold, reserved / coming soon - silver, sold - black */
+.Car .car__container-ribbon--green span {
+    background-image: linear-gradient(90deg, #9A7438 0%, #CFAE6B 30%, #F5E6B8 50%, #CFAE6B 70%, #9A7438 100%);
+}
+.Car .car__container-ribbon--yellow span {
+    background-image: linear-gradient(90deg, #8A8A8A 0%, #D6D6D6 30%, #F7F7F7 50%, #D6D6D6 70%, #8A8A8A 100%);
+}
+.Car .car__container-ribbon--red span {
+    @apply text-gold border-y border-gold-dark;
+    background-image: linear-gradient(90deg, #000 0%, #2A2A2A 50%, #000 100%);
 }
 
 /* Shadow of a ribbon */
@@ -86,16 +98,16 @@
 
 /* Lines responsible for the second shadow (the one higher) */
 .car__container-ribbon--green::after {
-    background-color: hsl(120, 100%, 15%);
-    box-shadow: 109.5px -110px hsl(120, 100%, 15%); 
+    background-color: #6B5226;
+    box-shadow: 109.5px -110px #6B5226; 
 }
 .car__container-ribbon--yellow::after {
-    background-color: hsl(39, 100%, 40%);
-    box-shadow: 109.5px -110px hsl(39, 100%, 40%);
+    background-color: #5E5E5E;
+    box-shadow: 109.5px -110px #5E5E5E;
 }
 .car__container-ribbon--red::after {
-    background-color: hsl(0, 100%, 30%);
-    box-shadow: 109.5px -110px hsl(0, 100%, 30%);
+    background-color: #6B5226;
+    box-shadow: 109.5px -110px #6B5226;
 }
 
 /* In case of "Benzyna + LPG" description the 4th div needs more space, so that's why the code below */
@@ -177,9 +189,11 @@
     @apply opacity-95 transition ease-in-out duration-500
     lg:opacity-100;
 }
+/* Hidden menu is only transparent (for the fade), so it must also ignore clicks -
+   otherwise its invisible links cover the page below the header and catch taps */
 .siteHeader__navbar--hidden {
-    @apply opacity-0 transition ease-in-out duration-500
-    lg:opacity-100;
+    @apply opacity-0 pointer-events-none transition ease-in-out duration-500
+    lg:opacity-100 lg:pointer-events-auto;
 }
 
 /* Slider component */

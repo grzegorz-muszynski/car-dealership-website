@@ -23,10 +23,7 @@ export default function Car(props: any) {
                 'car__container-ribbon--yellow' : (props.state === 'sold' ? 
                 'car__container-ribbon--red' : 'car__container-ribbon--green')}>
                 {/* The ribbon */}
-                <span className={
-                    (props.state === 'soon' || props.state === 'zarezerwowane') ? 
-                    'bg-amber-500' : (props.state === 'sold' ? 
-                    'bg-red-600' : 'bg-green-800')}>
+                <span>
                     {props.state === 'soon' ? 
                         'Już wkrótce!' : (props.state === 'sold' ?
                         'Sprzedane' : props.state === 'zarezerwowane' ?
@@ -53,7 +50,7 @@ export default function Car(props: any) {
 
             {/* Car's name */}
             <p className='flex items-center justify-center py-px px-2 h-[56px] text-center'>
-                <span className='inline-block leading-car-title text-xl align-middle text-silver-light'>{props.title}</span>
+                <span className='inline-block leading-car-title text-xl align-middle text-silver'>{props.title}</span>
             </p>
 
             {/* Infobox */}

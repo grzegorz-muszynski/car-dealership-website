@@ -33,7 +33,8 @@ export default function SiteHeader() {
         xl:w-[1200px] mx-auto text-17 font-semibold'>
 
             {/* Logo with a link (the phone number is part of the graphic) */}
-            <div className='block w-full max-w-[960px] my-3 mx-auto px-3'>
+            <div className='block w-full max-w-[960px] my-3 mx-auto px-3
+                lg:max-w-[640px]'>
                 <NavLink to='/'>
                     <img
                         className='block w-full h-auto'
@@ -43,15 +44,19 @@ export default function SiteHeader() {
                 </NavLink>
             </div>
 
-            {/* Menu button */}
-            <img 
-                className='block mx-auto mb-3 h-5 w-5 cursor-pointer
+            {/* Menu button - framed and labelled, so it's clear it opens the other pages */}
+            <button
+                className='flex items-center justify-center gap-3 w-48 mx-auto mb-3 py-2
+                border-2 border-gold rounded-md text-gold text-lg tracking-widest cursor-pointer
+                active:bg-panel-hover
                 lg:hidden'
-                src={menuBtn}
                 onClick={toggleMenu}
                 ref={buttonRef}
-                alt='Najlepsze samochody używane w Małopolsce'
-            />
+                aria-expanded={menuOpen}
+            >
+                <img className='h-5 w-5' src={menuBtn} alt='' />
+                MENU
+            </button>
 
             {/* Navbar - a dropdown below the header on small screens, a regular row below the logo on large ones */}
             <ul className={`absolute z-20 top-full w-full text-xl
@@ -72,6 +77,11 @@ export default function SiteHeader() {
                 <NavLink onClick={hideMenu} to='/about' > 
                      <li className='siteHeader__li'>
                          <span className={`siteHeader__li__span  ${location.pathname === '/about' && 'text-gold'}`}>O nas</span>                    </li>
+                </NavLink>
+                <NavLink onClick={hideMenu} to='/opinie' >
+                    <li className='siteHeader__li'>
+                        <span className={`siteHeader__li__span  ${location.pathname === '/opinie' && 'text-gold'}`}>Opinie</span>
+                    </li>
                 </NavLink>
                 <NavLink onClick={hideMenu} to='/buy' > 
                     <li className='siteHeader__li'>

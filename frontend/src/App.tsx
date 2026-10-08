@@ -11,6 +11,7 @@ import Contact from "./pages/Contact";
 import Financing from "./pages/Financing";
 import Footer from "./components/Footer";
 import Offer from "./pages/Offer";
+import Reviews from "./pages/Reviews";
 import Sold from "./pages/Sold";
 import ScrollPagesTop from "./hooks/scrollPagesTop";
 import SiteHeader from "./components/SiteHeader";
@@ -133,6 +134,7 @@ function App() {
           <Wallpaper />
           <Routes>
             <Route path='/about' element={<About />} /> 
+            <Route path='/opinie' element={<Reviews />} />
             <Route path='/buy' element={<Buy />} /> 
             <Route path='/carpage/:id' element={<CarPage />} /> 
             <Route path='/contact' element={<Contact />} /> 

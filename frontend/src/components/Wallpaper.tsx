@@ -15,6 +15,9 @@ import wallpaper13 from '../assets/backgrounds/wallpaper13.webp';
 import wallpaper14 from '../assets/backgrounds/wallpaper14.webp';
 import wallpaper15 from '../assets/backgrounds/wallpaper15.webp';
 import wallpaper16 from '../assets/backgrounds/wallpaper16.webp';
+import wallpaper17 from '../assets/backgrounds/wallpaper17.webp';
+import wallpaper18 from '../assets/backgrounds/wallpaper18.webp';
+import wallpaper19 from '../assets/backgrounds/wallpaper19.webp';
 
 // Each picture is cropped to the wallpaper's shape - "position" decides which part stays visible
 // (horizontal% vertical%; 0% = left/top edge, 100% = right/bottom edge), chosen so the cars stay in the frame
@@ -30,11 +33,14 @@ const backgrounds = [
     { src: wallpaper9, position: '50% 85%' },  // Audi RS6 from behind and BMWs
     { src: wallpaper10, position: '50% 55%' }, // three Mercedes GLCs
     { src: wallpaper11, position: '50% 55%' }, // three BMWs at sunset
-    { src: wallpaper12, position: '50% 62%' }, // BMWs at night, lit grilles
+    { src: wallpaper12, position: '50% 72%' }, // BMWs at night, lit grilles
     { src: wallpaper13, position: '50% 80%' }, // two Cupras from behind at night
     { src: wallpaper14, position: '50% 62%' }, // blue, white and black BMWs from the side
-    { src: wallpaper15, position: '50% 52%' }, // row of Mercedes GLCs
-    { src: wallpaper16, position: '50% 70%' }, // two black Mercedes GLCs
+    { src: wallpaper15, position: '50% 60%' }, // row of Mercedes GLCs
+    { src: wallpaper16, position: '50% 80%' }, // two black Mercedes GLCs
+    { src: wallpaper17, position: '50% 50%' }, // collage - ten cars from the front
+    { src: wallpaper18, position: '50% 50%' }, // collage - ten cars from the side
+    { src: wallpaper19, position: '50% 50%' }, // collage - ten cars from behind
 ];
 
 export default function Wallpaper() {
@@ -76,9 +82,9 @@ export default function Wallpaper() {
     }, [shouldUpdateBackground1, background1, background2]);
 
     return (
-        // Height grows with the screen width (40% of it), so every screen shows a similar crop;
-        // limited to 220-540px so it's neither a thin strip on phones nor pushing the offer off-screen on big monitors
-        <div id='wallpaper' className='h-[clamp(220px,40vw,540px)] relative'>
+        // Height grows with the screen width (28% of it), so every screen shows a similar crop;
+        // limited to 200-400px so it's neither a thin strip on phones nor pushing the offer off-screen on big monitors
+        <div id='wallpaper' className='h-[clamp(200px,28vw,400px)] relative'>
             {/* Background no. 1 */}
             <div
                 // When background 1 is waiting for being updated - must be hidden
