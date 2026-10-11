@@ -10,6 +10,9 @@ const links = [
     { name: 'OtoMoto', url: 'https://alfamotors.otomoto.pl/inventory', path: '' },
 ];
 
+// Also used by the "Obejrzyj film" button on car pages
+export const youtubeIconPath = links.find(link => link.name === 'YouTube')!.path;
+
 function Icon({ path }: { path: string }) {
     if (!path) {
         return (

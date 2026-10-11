@@ -89,6 +89,11 @@
     "kolejnosc": {
       "type": "integer",
       "required": false
+    },
+    "youtube": {
+      "type": "string",
+      "required": false,
+      "regex": "^\\s*(https?://)?(www\\.|m\\.)?(youtube\\.com/(watch\\?(.*&)?v=|shorts/|embed/|live/)|youtu\\.be/)[A-Za-z0-9_-]{11}([?&#].*)?\\s*$"
     }
   }
 }

@@ -3,6 +3,7 @@ import ImageSlider from '../components/ImageSlider';
 import Loader from '../components/Loader';
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import YouTubeLink, { getYouTubeId } from '../components/YouTubeLink';
 
 const strapiURL = 'https://wanda196-20196.mikrus.cloud';
 
@@ -36,6 +37,7 @@ interface CarAttributes {
         }[];
     };
     description: string;
+    youtube?: string | null;
 }
 
 interface Car {
@@ -131,6 +133,13 @@ export default function CarPage() {
                     </span>
                 </div>
             </h1>
+
+            {/* Link to the car's video - only when a valid YouTube link was added to the car in Strapi */}
+            {getYouTubeId(foundCar[1].attributes.youtube) && (
+                <div className='flex justify-center mb-5'>
+                    <YouTubeLink videoId={getYouTubeId(foundCar[1].attributes.youtube)!} />
+                </div>
+            )}
 
             {/* Mini slider */}
             <ImageSlider id='ImageSlider' slides={imagesURLs} />
