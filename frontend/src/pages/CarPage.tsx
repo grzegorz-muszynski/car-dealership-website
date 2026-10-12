@@ -210,7 +210,19 @@ export default function CarPage() {
 
             <div className='CarPage__description relative top-32 w-90vw max-w-[1080px] mx-auto bg-panel border border-gold-dark/60 shadow-car-page-shadow'>
                 <div className="pt-3 pb-7 font-medium text-3xl text-center text-gold">Opis pojazdu</div>
-                <ReactMarkdown className='car-description px-2 pb-5'>
+                <ReactMarkdown
+                    className='car-description px-2 pb-5'
+                    components={{
+                        // In the Strapi editor lines starting with "*" are group headings and lines starting with "-"
+                        // are items under them - markdown treats both as the same bullet, so the class is set
+                        // from the character the line actually starts with
+                        li: ({ node, children }) => {
+                            const offset = node.position?.start.offset;
+                            const marker = offset !== undefined ? foundCar[1].attributes.description.charAt(offset) : '';
+                            return <li className={marker === '*' ? 'car-description__group' : 'car-description__item'}>{children}</li>;
+                        },
+                    }}
+                >
                     {foundCar[1].attributes.description}
                 </ReactMarkdown>
             </div>

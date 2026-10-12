@@ -76,16 +76,11 @@
     @apply absolute left-[-60px] top-[50px] w-[250px] h-[27px] tracking-[0.02em];
 }
 
-/* Ribbon colors by status: price (available) - gold, reserved / coming soon - silver, sold - black */
-.Car .car__container-ribbon--green span {
-    background-image: linear-gradient(90deg, #9A7438 0%, #CFAE6B 30%, #F5E6B8 50%, #CFAE6B 70%, #9A7438 100%);
-}
-.Car .car__container-ribbon--yellow span {
-    background-image: linear-gradient(90deg, #8A8A8A 0%, #D6D6D6 30%, #F7F7F7 50%, #D6D6D6 70%, #8A8A8A 100%);
-}
+/* All ribbons share one silver-gold metallic band (like the lettering on the logo) - only the text differs */
+.Car .car__container-ribbon--green span,
+.Car .car__container-ribbon--yellow span,
 .Car .car__container-ribbon--red span {
-    @apply text-gold border-y border-gold-dark;
-    background-image: linear-gradient(90deg, #000 0%, #2A2A2A 50%, #000 100%);
+    background-image: linear-gradient(90deg, #9A9A9A 0%, #F2F2F2 30%, #CFAE6B 55%, #F5E6B8 72%, #9A7438 100%);
 }
 
 /* Shadow of a ribbon */
@@ -102,8 +97,8 @@
     box-shadow: 109.5px -110px #6B5226; 
 }
 .car__container-ribbon--yellow::after {
-    background-color: #5E5E5E;
-    box-shadow: 109.5px -110px #5E5E5E;
+    background-color: #6B5226;
+    box-shadow: 109.5px -110px #6B5226;
 }
 .car__container-ribbon--red::after {
     background-color: #6B5226;
@@ -178,9 +173,30 @@
 .car-description h4,
 .car-description h5,
 .car-description h6 { @apply text-lg; }
-.car-description ul { @apply list-disc pl-6; }
+.car-description ul { @apply list-none pl-0; }
 .car-description ol { @apply list-decimal pl-6; }
 .car-description li { @apply mb-1; }
+/* "* heading" lines - gold, bold, with a small gold diamond */
+.car-description__group {
+    @apply relative pl-5 font-semibold text-gold;
+}
+.car-description__group::before {
+    content: '◆';
+    @apply absolute left-0 top-[0.15em] text-[0.7em] text-gold;
+}
+/* Keep a heading close to the items listed under it */
+.car-description ul:has(> .car-description__group) { @apply mb-1; }
+/* "- item" lines - indented under the heading, with a dash */
+.car-description__item {
+    @apply relative pl-10;
+}
+.car-description__item::before {
+    content: '–';
+    @apply absolute left-5 text-gold-dark;
+}
+/* Numbered lists keep their numbers */
+.car-description ol > li { @apply pl-0; }
+.car-description ol > li::before { content: none; }
 .car-description blockquote { @apply pl-4 border-l-2 border-gold-dark italic; }
 .car-description a { @apply text-gold underline; }
 .car-description > :last-child { @apply mb-0; }
