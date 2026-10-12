@@ -156,6 +156,35 @@
     @apply leading-7;
 }
 
+/* Car description from Strapi (markdown) - Tailwind resets the browser's text spacing,
+   so paragraphs, headings and lists written in the Strapi editor need it back here */
+.car-description p,
+.car-description ul,
+.car-description ol,
+.car-description blockquote {
+    @apply mb-4;
+}
+.car-description h1,
+.car-description h2,
+.car-description h3,
+.car-description h4,
+.car-description h5,
+.car-description h6 {
+    @apply mt-6 mb-3 font-semibold text-gold;
+}
+.car-description h1 { @apply text-2xl; }
+.car-description h2 { @apply text-xl; }
+.car-description h3,
+.car-description h4,
+.car-description h5,
+.car-description h6 { @apply text-lg; }
+.car-description ul { @apply list-disc pl-6; }
+.car-description ol { @apply list-decimal pl-6; }
+.car-description li { @apply mb-1; }
+.car-description blockquote { @apply pl-4 border-l-2 border-gold-dark italic; }
+.car-description a { @apply text-gold underline; }
+.car-description > :last-child { @apply mb-0; }
+
 /* Financing page */
 .financing__options {
     @apply my-4 w-full;

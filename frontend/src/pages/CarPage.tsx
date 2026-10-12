@@ -210,7 +210,7 @@ export default function CarPage() {
 
             <div className='CarPage__description relative top-32 w-90vw max-w-[1080px] mx-auto bg-panel border border-gold-dark/60 shadow-car-page-shadow'>
                 <div className="pt-3 pb-7 font-medium text-3xl text-center text-gold">Opis pojazdu</div>
-                <ReactMarkdown className='px-2 pb-5'>
+                <ReactMarkdown className='car-description px-2 pb-5'>
                     {foundCar[1].attributes.description}
                 </ReactMarkdown>
             </div>
